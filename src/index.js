@@ -6,17 +6,27 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
-var CONNECTION_ATTEMPTS = 10;
+var CONNECTION_ATTEMPTS = 60;
 
 async function startApplication() {
 
   // Connect to database before listening to requests
-  sequelize.authenticate().then(() => {
+  sequelize.authenticate().then(async () => {
     
     console.log('> Database connected')
-
     require('./routes')(app);
-    app.listen(process.env.PORT || 3000);
+
+    // Sync database structure with models
+    try {
+      require('./models')
+      await sequelize.sync();
+    } catch(e) {
+      console.error('error: ', e)
+    }
+
+    let port = process.env.PORT || 3000
+    console.log(`> Listening at port ${port}`)
+    app.listen(port);
 
   }).catch(err => {
     
@@ -25,11 +35,11 @@ async function startApplication() {
     if(CONNECTION_ATTEMPTS > 0) {
       
       // Retry connection
-      console.info('Retrying in 1 second')
+      console.info('Retrying in 5 seconds')
       CONNECTION_ATTEMPTS--;
       setTimeout(() => {
         startApplication()
-      }, 1000)
+      }, 5000)
 
     } else {
 
