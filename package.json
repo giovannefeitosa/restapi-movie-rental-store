@@ -1,0 +1,23 @@
+{
+  "name": "restapi-movie-rental-store",
+  "version": "1.0.0",
+  "description": "Just another job interview",
+  "main": "src/index.js",
+  "repository": "https://github.com/shakegioh/restapi-movie-rental-store.git",
+  "author": "Giovanne <giovanneafonso@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "serve": "cross-env DB_URI=mariadb://root@localhost/developer-api-test node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-validator": "^6.1.1",
+    "mariadb": "^2.0.5",
+    "sequelize": "^5.9.2"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.19.1"
+  }
+}
