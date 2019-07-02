@@ -6,6 +6,8 @@ const Store = db.define('stores', {
     type: Sequelize.STRING,
     allowNull: false,
   }
+}, {
+  underscored: true
 })
 
 module.exports = Store

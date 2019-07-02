@@ -2,18 +2,16 @@ const Sequelize = require('sequelize')
 const db = require('../sequelize')
 
 const Movie = db.define('movies', {
-  name: {
+  title: {
     type: Sequelize.STRING,
     allowNull: false,
   },
-  email: {
-    type: Sequelize.STRING,
-    allowNull: false,
-  },
-  password: {
+  director: {
     type: Sequelize.STRING,
     allowNull: false,
   }
+}, {
+  underscored: true
 })
 
 module.exports = Movie

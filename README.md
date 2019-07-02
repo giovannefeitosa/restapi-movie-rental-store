@@ -14,9 +14,11 @@ List of mariadb tables schema
 | --- | --- | --- | --- | --- |
 | **users** | id | name | email | password
 | **stores** | id | name
-| **movies** | id | title | director | created_at
-| **stores_movies** | store_id | movie_id | stock
-| **rented_movies** | user_id | store_id | movie_id | created_at
+| **movies** | id | title | director
+| **stocks** | store_id | movie_id | stock
+| **rented_movies** | user_id | store_id | movie_id
+
+Note: All tables have additional timestamp fields
 
 ## Response resources
 

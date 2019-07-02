@@ -19,7 +19,8 @@ async function startApplication() {
     // Sync database structure with models
     try {
       require('./models')
-      await sequelize.sync();
+      // Force = recreate db tables
+      await sequelize.sync({ force: true });
     } catch(e) {
       console.error('error: ', e)
     }
