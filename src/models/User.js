@@ -17,6 +17,13 @@ const User = db.define('users', {
   }
 }, {
   underscored: true,
-})
+});
+
+// Hide password
+User.prototype.toJSON = function() {
+  var values = {...this.get()};
+  delete values.password;
+  return values;
+}
 
 module.exports = User

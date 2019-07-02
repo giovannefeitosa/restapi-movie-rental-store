@@ -48,6 +48,12 @@ List of API endpoints
 
 ---
 
+### GET /users
+
+List all users
+
+---
+
 ### POST /users
 
 Create a new user
