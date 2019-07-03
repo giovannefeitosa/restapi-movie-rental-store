@@ -37,23 +37,23 @@ const models = require('./models');
 
   // Fill Stocks
   await models.Stock.bulkCreate([
-    { store_id: 1, movie_id: 1, stock: 5 },
-    { store_id: 2, movie_id: 1, stock: 0 },
-    { store_id: 3, movie_id: 1, stock: 2 },
+    { storeId: 1, movieId: 1, stock: 5 },
+    { storeId: 2, movieId: 1, stock: 0 },
+    { storeId: 3, movieId: 1, stock: 2 },
 
-    { store_id: 1, movie_id: 2, stock: 2 },
-    { store_id: 2, movie_id: 2, stock: 0 },
-    { store_id: 3, movie_id: 2, stock: 1 },
+    { storeId: 1, movieId: 2, stock: 2 },
+    { storeId: 2, movieId: 2, stock: 0 },
+    { storeId: 3, movieId: 2, stock: 1 },
 
-    { store_id: 1, movie_id: 3, stock: 4 },
-    { store_id: 2, movie_id: 3, stock: 0 },
-    { store_id: 3, movie_id: 3, stock: 4 },
+    { storeId: 1, movieId: 3, stock: 4 },
+    { storeId: 2, movieId: 3, stock: 0 },
+    { storeId: 3, movieId: 3, stock: 4 },
   ]);
 
   // Already rent some movies
   await models.RentedMovies.bulkCreate([
-    { user_id: 1, store_id: 3, movie_id: 3 },
-    { user_id: 3, store_id: 3, movie_id: 2 },
+    { userId: 1, storeId: 3, movieId: 3 },
+    { userId: 3, storeId: 3, movieId: 2 },
   ]);
 
 })();
