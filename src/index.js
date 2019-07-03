@@ -17,10 +17,12 @@ async function startApplication() {
     require('./routes')(app);
 
     // Sync database structure with models
+    // And seed initial data
     try {
-      require('./models')
+      require('./models');
       // Force = recreate db tables
       await sequelize.sync({ force: true });
+      require('./seeder');
     } catch(e) {
       console.error('error: ', e)
     }
