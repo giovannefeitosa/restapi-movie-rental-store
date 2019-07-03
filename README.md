@@ -6,6 +6,11 @@ This is a REST API designed to serve rental stores.
 > This is not a real project, it's a job interview simple test
 > ___
 
+### Statistics
+
+* Total time spent: about 7 hours
+
+
 ## Database Schema
 
 List of mariadb tables schema
@@ -177,5 +182,3 @@ Response:
 | 403 | { message } | Unauthorized or Invalid devolution
 
 ---
-
-Now let's code!
