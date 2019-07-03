@@ -174,7 +174,7 @@ Response:
 | HTTP Code | Data | Notes |
 | --- | --- | --- |
 | 200 | { success: true }
-| 403 | | Unauthorized or Invalid devolution
+| 403 | { message } | Unauthorized or Invalid devolution
 
 ---
 
