@@ -7,7 +7,7 @@
   "author": "Giovanne <giovanneafonso@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "serve": "cross-env DB_URI=mariadb://root@localhost/developer-api-test node src/index.js",
+    "serve": "cross-env DB_URI=mariadb://dbuser:dbpassword@dbhost/dbname node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "dependencies": {

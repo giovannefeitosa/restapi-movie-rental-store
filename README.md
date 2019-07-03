@@ -8,8 +8,44 @@ This is a REST API designed to serve rental stores.
 
 ### Statistics
 
-* Total time spent: about 7 hours
+* Total time spent: about 7.5 hours
 
+### Features
+
+* Rent movies from stores
+* Auto seed database
+* Runs inside docker
+* Runs outside docker *
+
+_* Need to pass env variables manually_
+
+### Todo
+
+> if it were a real-world project
+
+* Unit tests
+* Turn this into a microservice API
+* Better documentation
+* Use bcrypt for improved security
+* Panel to visualize data
+
+## Running
+
+### Running with docker
+
+`docker-compose up`
+
+Open http://localhost:3000
+
+### Running without docker
+
+To run without docker you need to provide the ENV variable `DB_URI` with a valid database connection URI.
+
+You can see an example command inside `package.json` "serve" script.
+
+Run on linux:
+
+`DB_URI=mariadb://dbuser:dbpassword@dbhost/dbname node src/index.js`
 
 ## Database Schema
 
@@ -21,7 +57,7 @@ List of mariadb tables schema
 | **stores** | id | name
 | **movies** | id | title | director
 | **stocks** | store_id | movie_id | stock
-| **rented_movies** | user_id | store_id | movie_id
+| **rented_movies** | user_id | store_id | movie_id | quantity
 
 Note: All tables have additional timestamp fields
 
