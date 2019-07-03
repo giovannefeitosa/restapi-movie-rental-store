@@ -1,26 +1,10 @@
 const { check, validationResult } = require('express-validator');
-const models = require('./models')
+const { handleErrors } = require('../helpers');
+const models = require('../models')
 // const bcrypt = require('bcrypt');
 const md5 = require('md5')
 
-
-/**
- * If the route has validation errors
- * then return error msg with HTTP status 400
- */
-const handleErrors = (req, res, next) => {
-  const errors = validationResult(req)
-  if(errors.isEmpty()) {
-    next()
-  } else {
-    return res.status(400).json({
-      message: errors.errors[0].msg
-    })
-  }
-}
-
 module.exports = function(app) {
-  
   app.get('/users', async (req, res) => {
     let users = await models.User.findAll()
     res.json(users)
@@ -61,5 +45,4 @@ module.exports = function(app) {
     })
 
   });
-  
-}
+};
