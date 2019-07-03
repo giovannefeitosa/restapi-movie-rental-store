@@ -4,7 +4,12 @@ const User = require('./User')
 const Store = require('./Store')
 const Movie = require('./Movie')
 
-const RentedMovies = db.define('rented_movies', {}, {
+const RentedMovies = db.define('rented_movies', {
+  quantity: {
+    type: Sequelize.INTEGER,
+    defaultValue: 1
+  }
+}, {
   underscored: true
 })
 

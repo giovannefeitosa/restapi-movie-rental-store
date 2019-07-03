@@ -15,7 +15,7 @@ module.exports = {
   /**
    * Middleware to decode token and set current user to request object
    */
-  decodeToken(req, res, next) {
+  protectRoute(req, res, next) {
     let token = req.headers['authorization']
     
     if(!token || token.indexOf('Bearer ') !== 0) {
