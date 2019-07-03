@@ -33,7 +33,7 @@ async function startApplication() {
 
   }).catch(err => {
     
-    console.error('> Unable to connect to the database!');
+    console.error('> Unable to connect to the database! ');
 
     if(CONNECTION_ATTEMPTS > 0) {
       

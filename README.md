@@ -90,8 +90,8 @@ Response:
 
 | HTTP Code | Data | Notes |
 | --- | --- | --- |
-| 200 | { access_token } | Access token required to subsequent requests
-| 403 | | Unauthorized
+| 200 | { access_token, user } | Access token is required to POST requests
+| 403 | { message } | Unauthorized
 
 ---
 

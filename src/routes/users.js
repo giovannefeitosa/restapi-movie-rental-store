@@ -3,12 +3,47 @@ const { handleErrors } = require('../helpers');
 const models = require('../models')
 // const bcrypt = require('bcrypt');
 const md5 = require('md5')
+const jwt = require('jsonwebtoken');
 
 module.exports = function(app) {
+  /**
+   * List all users
+   */
   app.get('/users', async (req, res) => {
     let users = await models.User.findAll()
     res.json(users)
-  })
+  });
+
+  /**
+   * Login - get access token
+   */
+  app.post('/login', [
+
+    check('email').isEmail().withMessage('Invalid email'),
+    check('password').isString().withMessage('Missing password'),
+    handleErrors
+
+  ], async (req, res) => {
+    
+    let user = await models.User.findOne({where: {email: req.body.email}})
+
+    if(!user) {
+      return res.status(403).json({
+        message: 'E-mail not found'
+      });
+    }
+    
+    if(user.password !== md5(req.body.password)) {
+      return res.status(403).json({
+        message: 'Invalid password'
+      });
+    }
+
+    let access_token = jwt.sign({ iss: user.id }, 'hire-me');
+
+    return res.json({ access_token, user });
+
+  });
 
   /**
    * Create user
