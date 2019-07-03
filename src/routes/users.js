@@ -1,9 +1,10 @@
 const { check } = require('express-validator');
-const { handleErrors } = require('../helpers');
-const models = require('../models')
 // const bcrypt = require('bcrypt');
-const md5 = require('md5')
-const jwt = require('jsonwebtoken');
+const md5 = require('md5');
+const { handleErrors } = require('../helpers');
+const models = require('../models');
+const auth = require('../resources/auth');
+
 
 module.exports = function(app) {
   /**
@@ -39,9 +40,7 @@ module.exports = function(app) {
       });
     }
 
-    let access_token = jwt.sign({ iss: user.id }, 'hire-me');
-
-    return res.json({ access_token, user });
+    return res.json(auth.encodeUser(user));
 
   });
 
