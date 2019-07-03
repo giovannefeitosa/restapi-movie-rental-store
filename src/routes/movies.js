@@ -1,5 +1,3 @@
-const { check } = require('express-validator');
-const { handleErrors } = require('../helpers');
 const models = require('../models');
 
 module.exports = function(app) {
